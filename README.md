@@ -169,7 +169,7 @@ vagrant@ubuntu-bionic:~$ awk '{a=1; b=2; print a++, ++b}'
   * \>
   * \>=
 return 1 or true, 0 or false
-* Regular expression coparison
+* Regular expression comparison
   * ~
   * !~
 * Array subscript
@@ -233,6 +233,86 @@ vagrant@ubuntu-xenial:~/awk$
     does not match "ac"
 
 \\\\ escape the \
+
+/^abc/
+      matches that begins with "abc"
+      does not match "dabc"
+
+/abc$/
+      matches that ends with "abc"
+      does not match "abcd"
+
+[]
+  matches any character in the set
+
+/a[xyz]c/
+  matches any single character in the set, but only one
+  matches "axc", "ayc", "azc"
+  does not match "abc"
+  does not match "axyzc"
+
+*ranges*
+
+/a[a-z]c/
+  matches a range of characters from a to z
+  matches "abc", ... "axc", "ayc", "azc"
+
+*combined ranges*
+/a[a-zA-Z]c/
+  matches a range of characters from a to z and A to Z
+  matches "abc", ... "axc", "ayc", "azc", "aAc", "aYc", "aZc"
+
+/a[^a-z]c/
+  matches any single character not in the set
+  matches "a.c", "aBc"
+  does not match "abc"
+
+*zero o more repeats*
+/ab*c/
+  matches one or more repeats of "ab"
+  matches "abc", "abbbc", "ac"
+
+*one or more repeats*
+/ab+c/
+  matches one or more repeats of "ab"
+  matches "abc", "abbbc"
+  does not match "ac"
+
+*zero or one repeats*
+/ab?c/
+  matches zero or one repeats of "ab"
+  matches "abc", "ac"
+  does not match "abbbc"
+
+*specific number of repeats*
+{n}
+  matches exactly n repeats
+  /ab{3}c/
+  matches "abbbc"
+   does not match "abbbbc"
+
+{n,}
+  matches at least n repeats
+  /ab{3,}c/
+  matches "abbbc", "abbbbc"
+
+{n, m}
+  repeats from n to m
+/ab{3,4}/
+  matches "abbbc", "abbbbc"
+  does not match "abbbbbbc"
+
+##### quantifiers
+/(ab)+c/
+    matches one or more repeats of "ab"
+    matches "abc", "ababc", "abababc"
+
+*greediness*
+
+### Control structure
+
+Control the flow execution
+
 
 ### record separator (input)
 or line separator is specified by ``RS``
