@@ -19,6 +19,14 @@ awk command line tool essential
 * Style guidelines: ``shellcheck``
 * ``awk``
 
+## Execute awk commands
+
+>use the ``-f`` flag
+
+```bash
+
+```
+
 ## Author
 
 <!-- twitter -->
