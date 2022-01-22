@@ -313,6 +313,8 @@ vagrant@ubuntu-xenial:~/awk$
 
 Control the flow execution
 
+ if
+ for
 
 ### record separator (input)
 or line separator is specified by ``RS``
