@@ -93,6 +93,95 @@ vagrant@ubuntu-xenial:~/awk$
 ``ORS`` output record separator
 ``NR`` number of records
 ``NF`` number of fields
+``FILENAME`` Filename
+``FNR`` filename record
+  * usefull if concatenates more than one file as input
+``$0`` Entire line
+``NF`` the nth field
+  * awk '{print $NF}' text.txt // print the last field
+  * awk '{print $(NF-1)}' text.txt // print the last -1 field
+``$`` can asign a value to a field
+  * awk '{$1="value"; print $0} // print "value" in field 1 and the followed fields
+
+#### user defined variables
+
+> variables are case sensitive
+> all are global scope
+
+```bash
+vagrant@ubuntu-bionic:~$ awk '{hello=$1; bye=$2; print hello, bye}'
+hello goodbye
+hello goodbye
+^C
+vagrant@ubuntu-bionic:~$
+```
+
+apply operators to variables
+
+```bash
+vagrant@ubuntu-bionic:~$ awk '{a=1; b=2; print a + b}'
+
+3
+^C
+vagrant@ubuntu-bionic:~$ awk '{a=1; b=2; print a b}'
+
+12
+^C
+vagrant@ubuntu-bionic:~$ awk '{a=1; b=2; print a, b}'
+
+1 2
+^C
+vagrant@ubuntu-bionic:~$ 
+
+```
+#### operators and arrays
+
+* Math operators
+  * +
+  * -
+  * *
+  * /
+  * %
+  * ^
+* Increment and decrement operators
+  * ++
+  * --
+  * accept pre increment/decrement and post increment/decrement
+
+```bash
+vagrant@ubuntu-bionic:~$ awk '{a=1; b=2; print a++, ++b}'
+
+1 3
+```
+* Assignment operators
+  * =
+  * +=
+  * -=
+  * *=
+  * /=
+  * %=
+  * ^=
+* Comparision operators
+  * ==
+  * !=
+  * <
+  * <=
+  * >
+  * >=
+return 1 or true, 0 or false
+* Regular expression coparison
+  * ~
+  * !~
+* Array subscript
+  * []
+
+```bash
+vagrant@ubuntu-bionic:~$ awk '{a[1]=$1; a[2]=$2; a[3]=$3; print a[1], a[2], a[3]}'
+one two three
+one two three
+^C
+vagrant@ubuntu-bionic:~$ 
+```
 
 ### specify multiple files
 
