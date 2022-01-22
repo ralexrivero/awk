@@ -1,4 +1,12 @@
 # awk essential
+<!-- ansi regular-->
+```bash
+ █████  ██     ██ ██   ██ 
+██   ██ ██     ██ ██  ██  
+███████ ██  █  ██ █████   
+██   ██ ██ ███ ██ ██  ██  
+██   ██  ███ ███  ██   ██ 
+```
 
 awk command line tool essential
 
