@@ -76,6 +76,20 @@ HELLO Levy Woodstock
 vagrant@ubuntu-xenial:~/awk$ 
 ```
 
+## specify multiple files
+
+```bash
+vagrant@ubuntu-xenial:~/awk$ awk -v hi=HELLO '{print hi, $0}' names.txt names2.txt 
+HELLO Igor Mc Gregor
+HELLO Tomas Steele
+HELLO Wayne Johnson
+HELLO Molly Black
+HELLO Levy Woodstock
+HELLO Ronald Rivero
+HELLO Walt Whitman
+vagrant@ubuntu-xenial:~/awk$
+```
+
 ## Author
 
 <!-- twitter -->
