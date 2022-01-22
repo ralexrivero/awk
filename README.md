@@ -90,6 +90,20 @@ HELLO Walt Whitman
 vagrant@ubuntu-xenial:~/awk$
 ```
 
+## regular expresions
+
+> regular expresions must be enclosed in quotes
+
+accept the ``,!:;`` characters as separators
+
+```bash
+vagrant@ubuntu-xenial:~/awk$ awk -F '[,!:;]' '{print $4}'
+one two,three:four;five
+five
+^C
+vagrant@ubuntu-xenial:~/awk$ 
+```
+
 ## Author
 
 <!-- twitter -->
