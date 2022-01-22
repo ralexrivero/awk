@@ -166,8 +166,8 @@ vagrant@ubuntu-bionic:~$ awk '{a=1; b=2; print a++, ++b}'
   * !=
   * <
   * <=
-  * >
-  * >=
+  * \>
+  * \>=
 return 1 or true, 0 or false
 * Regular expression coparison
   * ~
@@ -210,6 +210,29 @@ five
 ^C
 vagrant@ubuntu-xenial:~/awk$ 
 ```
+
+/abc/
+  matches "abc", "xxabcxx""
+  does not match "abxxc", "ab", "ABC"
+
+```bash
+vagrant@ubuntu-xenial:~/awk$ awk '/on/{print $0}' feaw_greatnesses.txt 
+Great the risen and fallen nations, and their poets,
+Helmsmen of nations, choose your craft! where
+Great the daring and venture of sailors on new
+explorations.
+vagrant@ubuntu-xenial:~/awk$ 
+```
+/a.c/
+  matches "abc", "axc"
+  does not match "ac"
+
+\ removes special meaning
+/a\c/
+    matches "a.c"
+    does not match "ac"
+
+\\\\ escape the \
 
 ### record separator (input)
 or line separator is specified by ``RS``
