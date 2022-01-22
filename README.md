@@ -104,6 +104,21 @@ five
 vagrant@ubuntu-xenial:~/awk$ 
 ```
 
+## record separator
+or line separator is specified by ``RS``
+separate the fields by ``,`` and the records (lines) by ``!``
+
+```bash
+vagrant@ubuntu-xenial:~/awk$ cat bigline.txt 
+one,two,three!four,five,six!seven,eight,nine!ten,eleven,twelve
+vagrant@ubuntu-xenial:~/awk$ awk 'BEGIN{RS="!";FS=","} {print $2}' bigline.txt 
+two
+five
+eight
+eleven
+vagrant@ubuntu-xenial:~/awk$ 
+```
+
 ## Author
 
 <!-- twitter -->
