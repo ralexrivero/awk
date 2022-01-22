@@ -21,10 +21,87 @@ awk command line tool essential
 
 ## Execute awk commands
 
->use the ``-f`` flag
+>use the ``awk -f`` flag followed by the file containing the awk command
 
 ```bash
+vagrant@ubuntu-xenial:~/awk$ cat names.txt 
+Igor Mc Gregor
+Tomas Steele
+Wayne Johnson
+Molly Black
+Levy Woodstock
+vagrant@ubuntu-xenial:~/awk$ cat swap.awk 
+{print $2, $1}
+vagrant@ubuntu-xenial:~/awk$ awk -f swap.awk names.txt 
+Mc Igor
+Steele Tomas
+Johnson Wayne
+Black Molly
+Woodstock Levy
+vagrant@ubuntu-xenial:~/awk$ 
+```
 
+### flags
+
+> field separator with ``-F`` followed by the _separator string or character_
+
+```bash
+agrant@ubuntu-xenial:~/awk$ cat comma.txt 
+one,two,three,four,five
+vagrant@ubuntu-xenial:~/awk$ awk -F , '{print $2}' comma.txt 
+two
+vagrant@ubuntu-xenial:~/awk$ 
+```
+
+_interactive mode_
+```bash
+vagrant@ubuntu-xenial:~/awk$ awk -F - '{print $2}'
+one-two-three
+two
+^C
+vagrant@ubuntu-xenial:~/awk$ 
+```
+
+### variables
+
+> set variable with ``-v`` flag
+
+```bash
+vagrant@ubuntu-xenial:~/awk$ awk -v hi=HELLO '{print hi, $0}' names.txt 
+HELLO Igor Mc Gregor
+HELLO Tomas Steele
+HELLO Wayne Johnson
+HELLO Molly Black
+HELLO Levy Woodstock
+vagrant@ubuntu-xenial:~/awk$ 
+```
+
+## specify multiple files
+
+```bash
+vagrant@ubuntu-xenial:~/awk$ awk -v hi=HELLO '{print hi, $0}' names.txt names2.txt 
+HELLO Igor Mc Gregor
+HELLO Tomas Steele
+HELLO Wayne Johnson
+HELLO Molly Black
+HELLO Levy Woodstock
+HELLO Ronald Rivero
+HELLO Walt Whitman
+vagrant@ubuntu-xenial:~/awk$
+```
+
+## regular expresions
+
+> regular expresions must be enclosed in quotes
+
+accept the ``,!:;`` characters as separators
+
+```bash
+vagrant@ubuntu-xenial:~/awk$ awk -F '[,!:;]' '{print $4}'
+one two,three:four;five
+five
+^C
+vagrant@ubuntu-xenial:~/awk$ 
 ```
 
 ## Author
