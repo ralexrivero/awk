@@ -21,9 +21,24 @@ awk command line tool essential
 
 ## Execute awk commands
 
->use the ``-f`` flag
+>use the ``awk -f`` flag followed by the file containing the awk command
 
 ```bash
+vagrant@ubuntu-xenial:~/awk$ cat names.txt 
+Igor Mc Gregor
+Tomas Steele
+Wayne Johnson
+Molly Black
+Levy Woodstock
+vagrant@ubuntu-xenial:~/awk$ cat swap.awk 
+{print $2, $1}
+vagrant@ubuntu-xenial:~/awk$ awk -f swap.awk names.txt 
+Mc Igor
+Steele Tomas
+Johnson Wayne
+Black Molly
+Woodstock Levy
+vagrant@ubuntu-xenial:~/awk$ 
 
 ```
 
