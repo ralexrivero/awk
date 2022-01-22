@@ -119,6 +119,30 @@ eleven
 vagrant@ubuntu-xenial:~/awk$ 
 ```
 
+## special case in separator
+> ``RS=""`` empty string as separator takes the line as one field
+
+```bash
+vagrant@ubuntu-xenial:~/awk$ cat address.txt 
+Alex Wolf
+873 New Hamps Blvd
+New York, NY 3334
+
+Young Cheng
+1253 Craws Street
+Rockford, IL 4356
+
+Marck Zoom
+8 Washersmith Ave
+San Francisco, CA 18636
+
+vagrant@ubuntu-xenial:~/awk$ awk 'BEGIN {RS="";FS="\n"} {name=$1; address=$2; zip=$3; print "name:" name, "address:" address, "city:" zip} ' address.txt 
+name:Alex Wolf address:873 New Hamps Blvd city:New York, NY 3334
+name:Young Cheng address:1253 Craws Street city:Rockford, IL 4356
+name:Marck Zoom address:8 Washersmith Ave city:San Francisco, CA 18636
+vagrant@ubuntu-xenial:~/awk$ 
+```
+
 ## Author
 
 <!-- twitter -->
