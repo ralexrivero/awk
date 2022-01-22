@@ -112,7 +112,7 @@ five
 vagrant@ubuntu-xenial:~/awk$ 
 ```
 
-## record separator
+## record separator (input)
 or line separator is specified by ``RS``
 separate the fields by ``,`` and the records (lines) by ``!``
 
@@ -127,7 +127,7 @@ eleven
 vagrant@ubuntu-xenial:~/awk$ 
 ```
 
-## special case in separator
+## special case in separator (input)
 > ``RS=""`` empty string as separator takes the line as one field
 
 ```bash
@@ -150,6 +150,22 @@ name:Young Cheng address:1253 Craws Street city:Rockford, IL 4356
 name:Marck Zoom address:8 Washersmith Ave city:San Francisco, CA 18636
 vagrant@ubuntu-xenial:~/awk$ 
 ```
+
+## field and record separator in output
+
+> default field separator is `` `` _space_
+> default record separator is ``\n`` _new line_
+``ORS`` _output record separator_
+``OFS`` _output field separator_
+
+```bash
+vagrant@ubuntu-xenial:~/awk$ cat names2.txt 
+Ronald Rivero
+Walt Whitman
+vagrant@ubuntu-xenial:~/awk$ awk 'BEGIN{OFS=", ";ORS=" / "} {print $2, $1}' names2.txt 
+Rivero, Ronald / Whitman, Walt / vagrant@ubuntu-xenial:~/awk$ 
+```
+The comma between $2 and $1 means that awk will use the OFS
 
 ## Author
 
