@@ -8,6 +8,7 @@
 ██   ██  ███ ███  ██   ██ 
 ```
 
+awk programming language
 awk command line tool essential
 
 * Text manipulation
@@ -84,7 +85,16 @@ HELLO Levy Woodstock
 vagrant@ubuntu-xenial:~/awk$ 
 ```
 
-## specify multiple files
+#### built-in variables
+
+``FS`` input field separator
+``RS`` input record separator
+``OFS`` output field separator
+``ORS`` output record separator
+``NR`` number of records
+``NF`` number of fields
+
+### specify multiple files
 
 ```bash
 vagrant@ubuntu-xenial:~/awk$ awk -v hi=HELLO '{print hi, $0}' names.txt names2.txt 
@@ -98,7 +108,7 @@ HELLO Walt Whitman
 vagrant@ubuntu-xenial:~/awk$
 ```
 
-## regular expresions
+### regular expresions
 
 > regular expresions must be enclosed in quotes
 
@@ -112,7 +122,7 @@ five
 vagrant@ubuntu-xenial:~/awk$ 
 ```
 
-## record separator (input)
+### record separator (input)
 or line separator is specified by ``RS``
 separate the fields by ``,`` and the records (lines) by ``!``
 
@@ -127,7 +137,7 @@ eleven
 vagrant@ubuntu-xenial:~/awk$ 
 ```
 
-## special case in separator (input)
+### special case in separator (input)
 > ``RS=""`` empty string as separator takes the line as one field
 
 ```bash
@@ -148,10 +158,10 @@ vagrant@ubuntu-xenial:~/awk$ awk 'BEGIN {RS="";FS="\n"} {name=$1; address=$2; zi
 name:Alex Wolf address:873 New Hamps Blvd city:New York, NY 3334
 name:Young Cheng address:1253 Craws Street city:Rockford, IL 4356
 name:Marck Zoom address:8 Washersmith Ave city:San Francisco, CA 18636
-vagrant@ubuntu-xenial:~/awk$ 
+vagrant@ubuntu-xenial:~/awk$ ;
 ```
 
-## field and record separator in output
+### field and record separator in output
 
 > default field separator is `` `` _space_
 > default record separator is ``\n`` _new line_
